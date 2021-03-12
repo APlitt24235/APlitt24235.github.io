@@ -1,0 +1,44 @@
+* {
+  font-family: arial;
+}
+div {
+  border-style: solid;
+  margin: 2px;
+  padding: 4px;
+}
+#content{
+  background-color: #f1f1f1;
+  color: black;
+  width: auto;
+  height: auto;
+  border: 1px solid black;
+}
+#headerBox {
+  background-color: white;
+  border-style: inset;
+  color: black;
+  text-align: center;
+  border-color: green;
+}
+#linksBox {
+  background-color: rgb(148, 99, 71);
+
+}
+#parasBox {
+  background-color: rgb(148, 99, 71);
+}
+.para {
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: auto;
+  width: auto;
+  border: 1px solid black;
+}
+a {
+  color: white;
+}
+a:hover {
+  color: purple;
+}
