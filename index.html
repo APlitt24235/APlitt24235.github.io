@@ -1,50 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Plitt's Portfolio</title>
+    <style>
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        body {
+            font-size: 24px;
+            color:#FFFFFF;
+            margin-left: 55%;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
     <canvas id="bg"></canvas>
-    <main>
-      <header>
-        <h1>Alexander Plitt</h1>
-        <p>Welcome to my website!</p>
-      </header>
-      <blockquote>
-        <p>I like to code and create digital art.</p>
-      </blockquote>
-      <section>
-        <h2>Objective</h2>
+    <br><br><br>
+    <h1>Alexander Plitt</h1>
+    <br><br><br>
+    <h2>I like to code and create digital art.</h2>
+    <br><br><br>
+        <h3>Objective</h3>
         <p>I wish to create a positive work environment.</p>
         <p>I'm also dedicated to coming up with inventive ideas related to the project at hand.</p>
         <p>I enjoy creating an interactive and fun experience for users.</p>
         <p>While I aim to accomplish all of these things, I also aim to gain valuable experience along the way.</p>
-      </section>
-      <section class="light">
-        <h2>Experience</h2>
+    <br><br><br>
+        <h3>Experience</h3>
         <p>I worked as a Senior Developer for Formbar.js, which is a classroom tool for teachers to use to enhance the classroom experience.</p>
-        <h2>Skills</h2>
-        <p>I am certified with the CompTIA ITF+, and am proficient in JavaScript, HTML, CSS, nodeJS, ExpressJS, EJS, Oauth2, SQLite3, GitHub, and KanBan.</p>
-      </section>
-      <blockquote>
-        <p>With great power, comes great responsibility. <br>-Uncle Ben (Marvel Comics/Spider-Man)</p>
-      </blockquote>
-      <section class="left">
-        <h2>Student Leadership</h2>
-        <h3>Student Ambassador</h3>
-        <p>I was a Student Ambassador along with a group of students to represent York County School of Technology during State Advocacy Day and Technical School Education Day at the capitol in Harrisburg, PA.</p>
-        <h3>Student Interview</h3>
-        <p>I was a part of an interview promoting my technical shop class along with another student for YCST's Programming and Interactive Media program.</p>
-        <h3>Open House Volunteer</h3>
-        <p>I volunteered to help out and speak to upcoming students of YCST about computer programming during YCST's Open Houses.</p>
-      </section>
-      <blockquote>
-        <p>Thanks for reading!</p>
-      </blockquote>
-    </main>
-    <script type="module" src="/main.js"></script>
-  </body>
+    <br><br><br>
+        <h3>Skills</h3>
+        <p>I am certified with the CompTIA ITF+, and am proficient in JavaScript, HTML, CSS, nodeJS, ExpressJS, EJS, OAuth2, SQLite3, GitHub, and KanBan.</p>
+    <br><br><br>
+    <h3>Student Leadership</h3>
+    <h4>Student Ambassador</h4>
+    <p>I was a Student Ambassador along with a group of students to represent York County School of Technology during State Advocacy Day and Technical School Education Day at the capitol in Harrisburg, PA.</p>
+    <br><br>
+    <h4>Open House Volunteer</h4>
+    <p>I volunteered to help out and speak to upcoming students of YCST about computer programming during YSCT's Open House.</p>
+    <br><br>
+    <h4>Student Interview</h4>
+    <p>I was a part of an interview promoting my technical shop class along with another student for YCST's Programming and Interactive Media program.</p>
+    <br><br><br><br><br><br><br><br><br>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+          }
+        }
+      </script>
+    <script type="module" src="main.js"></script>
+</body>
 </html>

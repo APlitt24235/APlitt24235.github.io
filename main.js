@@ -1,125 +1,118 @@
-import * as THREE from "./three.module.js";
+import * as THREE from "three";
 
-//import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+const STARTY = 20;
 
 const scene = new THREE.Scene();
-
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.y = STARTY;
+camera.position.z = 30;
 
-const renderer = new THREE.WebGLRenderer(
-  {
-    canvas: document.querySelector("#bg")
-  }
-);
+const geometry = new THREE.PlaneGeometry(30, 20);
 
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
-camera.position.setX(-3);
+const backgroundTexture = new THREE.TextureLoader().load("background.jfif");
+scene.background = backgroundTexture;
 
-//LIGHTS
-const pointLight = new THREE.PointLight(0xFFFFFF, 1000, 1000);
-pointLight.position.set(0, 0, 50);
+//const texture = new THREE.TextureLoader().load("me.jpg");
+//texture.wrapS = THREE.RepeatWrapping;
+//texture.repeat.x = -1;
 
-const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.1);
+/*const material = new THREE.MeshBasicMaterial({
+    color: 0xffffff, 
+    side: THREE.DoubleSide,
+    map: texture
+}); */
 
-scene.add(pointLight);
-scene.add(ambientLight);
+var textureArray = [];
+var materialArray = [];
+var planeArray = [];
 
-//HELPERS
-/*
-const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper(200, 50);
-const axesHelper = new THREE.AxesHelper(20, 20, 20);
-scene.add(lightHelper, gridHelper, axesHelper);
-*/
-
-const geoPog = new THREE.CylinderGeometry(7.5, 7.5, 1.5, 32);
-const texturePog = new THREE.TextureLoader().load("eevee.png");
-const matPog = new THREE.MeshStandardMaterial(
-  {
-    color: 0xFFFFFF,
-    wireframe: false,
-    map: texturePog
-  }
-);
-const pog = new THREE.Mesh(geoPog, matPog);
-pog.rotation.x = 45;
-
-pog.scale.set(0.5, 0.5, 0.5);
-
-scene.add(pog);
-
-//const controls = new OrbitControls(camera, renderer.domElement);
-
-function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({
-    color: 0xFFFFFF
-  });
-  const star = new THREE.Mesh(geometry, material);
-  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
-  star.position.set(x, y, z);
-  scene.add(star);
+for (let i = 0; i < 4; i++) {
+    switch (i) {
+        case 0:
+            textureArray.push(new THREE.TextureLoader().load("me.jpg"));
+            textureArray[0].wrapS = THREE.RepeatWrapping;
+            textureArray[0].repeat.x = -1;
+            materialArray.push(new THREE.MeshBasicMaterial({
+                color: 0xffffff, 
+                side: THREE.DoubleSide,
+                map: textureArray[0]
+            }));
+            planeArray.push(new THREE.Mesh(new THREE.PlaneGeometry(13.3, 20), materialArray[0]));
+            planeArray[0].rotation.y = 9.75;
+            planeArray[0].position.x = -15;
+            planeArray[0].position.y = 27.5;
+            scene.add(planeArray[0]);
+            break;
+        case 1:
+            textureArray.push(new THREE.TextureLoader().load("formbarOAuth.png"));
+            textureArray[1].wrapS = THREE.RepeatWrapping;
+            textureArray[1].repeat.x = -1;
+            materialArray.push(new THREE.MeshBasicMaterial({
+                color: 0xffffff,
+                side: THREE.DoubleSide,
+                map: textureArray[1]
+            }));
+            planeArray.push(new THREE.Mesh(geometry, materialArray[1]));
+            planeArray[1].rotation.y = 9.75;
+            planeArray[1].position.x = -15;
+            planeArray[1].position.y = -5.5;
+            scene.add(planeArray[1]);
+            break;
+        case 2:
+            textureArray.push(new THREE.TextureLoader().load("capitol.jpg"));
+            textureArray[2].wrapS = THREE.RepeatWrapping;
+            textureArray[2].repeat.x = -1;
+            materialArray.push(new THREE.MeshBasicMaterial({
+                color: 0xffffff,
+                side: THREE.DoubleSide,
+                map: textureArray[2]
+            }));
+            planeArray.push(new THREE.Mesh(geometry, materialArray[2]));
+            planeArray[2].rotation.y = 9.75;
+            planeArray[2].position.x = -15;
+            planeArray[2].position.y = -32;
+            scene.add(planeArray[2]);
+            break;
+        case 3:
+            textureArray.push(new THREE.TextureLoader().load("interview.jpg"));
+            textureArray[3].wrapS = THREE.RepeatWrapping;
+            textureArray[3].repeat.x = -1;
+            materialArray.push(new THREE.MeshBasicMaterial({
+                color: 0xffffff,
+                side: THREE.DoubleSide,
+                map: textureArray[3]
+            }));
+            planeArray.push(new THREE.Mesh(geometry, materialArray[3]));
+            planeArray[3].rotation.y = 9.75;
+            planeArray[3].position.x = -15;
+            planeArray[3].position.y = -55;
+            scene.add(planeArray[3]);
+            break;
+    };
 };
 
-Array(200).fill().forEach(addStar);
-
-const spaceTexture = new THREE.TextureLoader().load("space.jpg");
-scene.background = spaceTexture;
-
-// Avatar
-const lukeTexture = new THREE.TextureLoader().load("luke.png");
-
-const luke = new THREE.Mesh(
-  new THREE.BoxGeometry(3, 3, 3),
-  new THREE.MeshBasicMaterial({map: lukeTexture})
-);
-
-scene.add(luke);
-
-//Moon
-const moonTexture = new THREE.TextureLoader().load("moon.jpg");
-const normalTexture = new THREE.TextureLoader().load("normal.jpg");
-
-const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshStandardMaterial({
-    map: moonTexture,
-    normalMap: normalTexture
-  })
-);
-
-scene.add(moon);
-
-moon.position.z = 15;
-moon.position.setX(-10);
-luke.position.z = -5;
-pog.position.z = -5;
+//const plane = new THREE.Mesh(geometry, material);
+//plane.rotation.y = 9.75;
+//plane.position.x = -15;
+//scene.add(plane);
 
 function moveCamera() {
-  const t = document.body.getBoundingClientRect().top;
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.075;
-  moon.rotation.z += 0.05;
-  luke.rotation.y += 0.01;
-  luke.rotation.z += 0.01;
-  camera.position.z = t * -0.01;
-  camera.position.x = t * -0.0002;
-  camera.position.y = t * -0.0002;
-}
+    const top = document.body.getBoundingClientRect().top;
+    camera.position.y = STARTY + top * 0.05;
+    console.log(top);
+};
 
 document.body.onscroll = moveCamera;
-moveCamera();
+
+const renderer = new THREE.WebGLRenderer(
+    {canvas: document.querySelector("#bg")}
+);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
 function animate(time) {
-  requestAnimationFrame(animate);
-  pog.rotation.x += 0.01;
-  pog.rotation.y += 0.005;
-  pog.rotation.z += 0.005;
-  //pog.rotation.y += 0.01;
-  //controls.update();
-  renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
 };
 
 animate();
