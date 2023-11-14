@@ -44,7 +44,7 @@ for (let i = 0; i < 4; i++) {
             scene.add(planeArray[0]);
             break;
         case 1:
-            textureArray.push(new THREE.TextureLoader().load("formbarOAuth.png"));
+            textureArray.push(new THREE.TextureLoader().load("formbarOAuth.PNG"));
             textureArray[1].wrapS = THREE.RepeatWrapping;
             textureArray[1].repeat.x = -1;
             materialArray.push(new THREE.MeshBasicMaterial({
