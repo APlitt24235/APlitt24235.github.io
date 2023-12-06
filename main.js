@@ -114,7 +114,7 @@ for (let i = 0; i < 4; i++) {
             planeArray.push(new THREE.Mesh(geometry, materialArray[3]));
             planeArray[3].rotation.y = 9.75;
             planeArray[3].position.x = -15;
-            planeArray[3].position.y = -58.5;
+            planeArray[3].position.y = -58;
             //Adds the fourth plane to the scene
             scene.add(planeArray[3]);
             break;
